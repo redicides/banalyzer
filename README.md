@@ -1,6 +1,6 @@
-# Unban Manager
+# Banalyzer (Ban Analyzer)
 
-A utility bot that scans through server unbans and tracks down ones that shouldn't go through.
+A utility bot that scans through server unbans and reverses ones based on certain conditions.
 
 # Requirements
 
