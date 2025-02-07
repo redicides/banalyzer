@@ -1,7 +1,7 @@
 {
-  "name": "unban-manager",
+  "name": "banalyzer",
   "version": "1.0.0",
-  "description": "A utility bot that screens server unbans and tracks down ones that shouldn't go through.",
+  "description": "A bot that screens discord server unbans and reverses ones based on certain conditions.",
   "author": {
     "name": "redicides",
     "url": "https://github.com/redicides"
