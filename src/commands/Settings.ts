@@ -31,12 +31,12 @@ export default class Settings extends Command<ChatInputCommandInteraction<'cache
             options: [
               {
                 name: Subcommand.AddManagerRole,
-                description: 'Add a role to the unban manager role list.',
+                description: 'Add a role to the ban analyzer role list.',
                 type: ApplicationCommandOptionType.Subcommand,
                 options: [
                   {
                     name: 'role',
-                    description: 'The role to add to the unban manager role list.',
+                    description: 'The role to add to the ban analyzer role list.',
                     type: ApplicationCommandOptionType.Role,
                     required: true
                   }
@@ -44,12 +44,12 @@ export default class Settings extends Command<ChatInputCommandInteraction<'cache
               },
               {
                 name: Subcommand.RemoveManagerRole,
-                description: 'Remove a role from the unban manager role list.',
+                description: 'Remove a role from the ban analyzer role list.',
                 type: ApplicationCommandOptionType.Subcommand,
                 options: [
                   {
                     name: 'role',
-                    description: 'The role to remove from the unban manager role list.',
+                    description: 'The role to remove from the ban analyzer role list.',
                     type: ApplicationCommandOptionType.Role,
                     required: true
                   }
@@ -57,7 +57,7 @@ export default class Settings extends Command<ChatInputCommandInteraction<'cache
               },
               {
                 name: Subcommand.ListManagerRoles,
-                description: 'List the current unban manager role list.',
+                description: 'List the current ban analyzer role list.',
                 type: ApplicationCommandOptionType.Subcommand
               }
             ]
@@ -120,7 +120,7 @@ export default class Settings extends Command<ChatInputCommandInteraction<'cache
     switch (group) {
       case SubcommandGroup.Unbans:
         if (!ConfigManager.global_config.owners.includes(interaction.user.id)) {
-          throw 'You cannot add, remove, or list unban manager roles as you are not recognized as an owner.';
+          throw 'You cannot add, remove, or list ban analyzer roles as you are not recognized as an owner.';
         }
 
         switch (subcommand) {
@@ -159,7 +159,7 @@ export default class Settings extends Command<ChatInputCommandInteraction<'cache
       data: { manager_roles: updated }
     });
 
-    return interaction.editReply(`Successfully added "${role.toString()}" to the unban manager role list.`);
+    return interaction.editReply(`Successfully added "${role.toString()}" to the ban analyzer role list.`);
   }
 
   static async _removeManagerRole(config: Guild, interaction: ChatInputCommandInteraction<'cached'>) {
@@ -178,21 +178,21 @@ export default class Settings extends Command<ChatInputCommandInteraction<'cache
       data: { manager_roles: updated }
     });
 
-    return interaction.editReply(`Successfully removed "${role.toString()}" from the unban manager role list.`);
+    return interaction.editReply(`Successfully removed "${role.toString()}" from the ban analyzer role list.`);
   }
 
   static async _listManagerRoles(config: Guild, interaction: ChatInputCommandInteraction<'cached'>) {
     const roles = JSON.parse(config.manager_roles) as string[];
 
     const embed = new EmbedBuilder()
-      .setAuthor({ name: 'Unban Manager Roles', iconURL: interaction.guild?.iconURL() ?? undefined })
+      .setAuthor({ name: 'Ban Analyzer Roles', iconURL: interaction.guild?.iconURL() ?? undefined })
       .setColor(Colors.NotQuiteBlack)
       .setDescription(
         roles.length > 0
-          ? `Below are the roles that are recognized as unban manager roles.\n\n${roles
+          ? `Below are the roles that are recognized as ban analyzer roles.\n\n${roles
               .map(r => `• <@&${r}>`)
               .join('\n')}`
-          : 'There are no unban manager roles for this guild.'
+          : 'There are no ban analyzer roles for this guild.'
       )
       .setTimestamp();
 

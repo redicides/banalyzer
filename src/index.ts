@@ -2,7 +2,7 @@ import 'dotenv/config';
 
 import { PrismaClient } from '@prisma/client';
 
-import { UnbanManagerClient } from '@utils/client';
+import { BanAnalyzer } from '@utils/client';
 import { sleep } from '@/utils';
 
 import Logger, { AnsiColor } from '@utils/logger';
@@ -11,14 +11,14 @@ import EventListenerManager from '@managers/events/EventListenerManager';
 import ConfigManager from '@managers/config/ConfigManager';
 
 /**
- * The main client instance for unban manager.
+ * The main client instance for ban analyzer.
  * Exported for ease of use.
  */
 
-export const client = new UnbanManagerClient();
+export const client = new BanAnalyzer();
 
 /**
- * The main database client for unban manager.
+ * The main database client for ban analyzer.
  */
 
 export const prisma = new PrismaClient();

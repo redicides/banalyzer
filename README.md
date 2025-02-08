@@ -9,7 +9,7 @@ A utility bot that scans through server unbans and reverses ones based on certai
 - [.env File](https://en.wikipedia.org/wiki/Environment_variable)
 - [config.yml File](https://www.freecodecamp.org/news/what-is-yaml-the-yml-file-format/)
 
-For more information on what environment variables need to be set [click here](https://github.com/redicides/unban-manager/blob/main/.env.example), for more information on what global config needs to be set [click here](https://github.com/redicides/unban-manager/blob/main/config.example.yml).
+For more information on what environment variables need to be set [click here](https://github.com/redicides/banalyzer/blob/main/.env.example), for more information on what global config needs to be set [click here](https://github.com/redicides/banalyzer/blob/main/config.example.yml).
 
 # Running the bot
 

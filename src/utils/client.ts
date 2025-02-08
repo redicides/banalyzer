@@ -1,47 +1,45 @@
-import {Client} from "discord.js";
-import {CLIENT_CACHE_OPTIONS, CLIENT_INTENTS, CLIENT_PARTIALS, CLIENT_SWEEPER_OPTIONS} from "@utils/constants";
+import { Client } from 'discord.js';
+import { CLIENT_CACHE_OPTIONS, CLIENT_INTENTS, CLIENT_PARTIALS, CLIENT_SWEEPER_OPTIONS } from '@utils/constants';
 
+export class BanAnalyzer extends Client {
+  constructor() {
+    super({
+      /**
+       * Gateway intents (bits).
+       *
+       * The following privileged intents are required for the bot to work:
+       *
+       * 1. Server Members Intent - For handling guild member events
+       *
+       * If these intents have not been granted the client will not log in.
+       * @see https://discord.com/developers/docs/topics/gateway#gateway-intents
+       */
 
-export class UnbanManagerClient extends  Client {
-    constructor() {
-        super({
+      intents: CLIENT_INTENTS,
 
-            /**
-             * Gateway intents (bits).
-             *
-             * The following privileged intents are required for the bot to work:
-             *
-             * 1. Server Members Intent - For handling guild member events
-             *
-             * If these intents have not been granted the client will not log in.
-             * @see https://discord.com/developers/docs/topics/gateway#gateway-intents
-             */
+      /**
+       * The partials for the client.
+       *
+       * These are required from utility functions.
+       */
 
-            intents: CLIENT_INTENTS,
+      partials: CLIENT_PARTIALS,
 
-            /**
-             * The partials for the client.
-             *
-             * These are required from utility functions.
-             */
+      /**
+       * Client cache options.
+       */
 
-            partials: CLIENT_PARTIALS,
+      makeCache: CLIENT_CACHE_OPTIONS,
 
-            /**
-             * Client cache options.
-             */
+      sweepers: CLIENT_SWEEPER_OPTIONS,
 
-            makeCache: CLIENT_CACHE_OPTIONS,
+      /**
+       * Mentions are disabled by default.
+       */
 
-            sweepers: CLIENT_SWEEPER_OPTIONS,
-
-            /**
-             * Mentions are disabled by default.
-             */
-
-            allowedMentions: {
-                parse: []
-            }
-        })
-    }
+      allowedMentions: {
+        parse: []
+      }
+    });
+  }
 }
